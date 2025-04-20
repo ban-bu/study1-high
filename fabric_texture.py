@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw, ImageFilter, ImageChops, ImageOps, ImageEnhance
+from PIL import Image, ImageDraw, ImageFilter, ImageChops, ImageOps
 import os
 import streamlit as st
 import numpy as np
@@ -311,75 +311,3 @@ def apply_fabric_texture(image, fabric_type, intensity=0.5):
     except Exception as e:
         st.error(f"应用纹理时出错: {e}")
         return image  # 如果出错，返回原始图像
-
-def apply_cotton_texture(image):
-    """为图像添加棉质纹理效果"""
-    # 轻微降低对比度使外观更柔软
-    enhancer = ImageEnhance.Contrast(image)
-    result = enhancer.enhance(0.95)
-    
-    # 微调亮度使纹理更明显
-    enhancer = ImageEnhance.Brightness(result)
-    result = enhancer.enhance(1.05)
-    
-    return result
-
-def apply_polyester_texture(image):
-    """为图像添加涤纶纹理效果"""
-    # 增加对比度使外观更亮
-    enhancer = ImageEnhance.Contrast(image)
-    result = enhancer.enhance(1.1)
-    
-    # 增加亮度使外观更有光泽
-    enhancer = ImageEnhance.Brightness(result)
-    result = enhancer.enhance(1.08)
-    
-    # 增加锐度使外观更清晰
-    enhancer = ImageEnhance.Sharpness(result)
-    result = enhancer.enhance(1.2)
-    
-    return result
-
-def apply_jersey_texture(image):
-    """为图像添加针织面料纹理效果"""
-    # 轻微降低对比度
-    enhancer = ImageEnhance.Contrast(image)
-    result = enhancer.enhance(0.9)
-    
-    # 微调亮度
-    enhancer = ImageEnhance.Brightness(result)
-    result = enhancer.enhance(1.02)
-    
-    return result
-
-def apply_linen_texture(image):
-    """为图像添加亚麻纹理效果"""
-    # 增加对比度使纹理更明显
-    enhancer = ImageEnhance.Contrast(image)
-    result = enhancer.enhance(1.15)
-    
-    # 降低亮度使外观更粗糙
-    enhancer = ImageEnhance.Brightness(result)
-    result = enhancer.enhance(0.95)
-    
-    # 增加锐度使纹理更明显
-    enhancer = ImageEnhance.Sharpness(result)
-    result = enhancer.enhance(1.3)
-    
-    return result
-
-def apply_bamboo_texture(image):
-    """为图像添加竹纤维纹理效果"""
-    # 轻微降低对比度使外观更柔软
-    enhancer = ImageEnhance.Contrast(image)
-    result = enhancer.enhance(0.92)
-    
-    # 增加亮度使外观更光滑
-    enhancer = ImageEnhance.Brightness(result)
-    result = enhancer.enhance(1.1)
-    
-    # 降低锐度使外观更平滑
-    enhancer = ImageEnhance.Sharpness(result)
-    result = enhancer.enhance(0.9)
-    
-    return result
